@@ -1,0 +1,24 @@
+{
+  "name": "pinterest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html --no-source-maps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smogse/Pinterest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smogse/Pinterest/issues"
+  },
+  "homepage": "https://github.com/smogse/Pinterest#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
+}
