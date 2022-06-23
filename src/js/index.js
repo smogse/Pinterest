@@ -1,6 +1,6 @@
 //вставляем картинки, аватарки, имена пользователей
 const images = document.getElementById('images');
-let imgWrapper, img, avatar, username;
+let avatar, username;
 
 fetch('https://62ab5fb5bd0e5d29af0ed526.mockapi.io/store')
 .then((response) => response.json())
@@ -36,7 +36,6 @@ fetch('https://62ab5fb5bd0e5d29af0ed526.mockapi.io/store')
             }
         ) ;
         pinContainer.addEventListener('mouseout', () => {
-                console.log('mouseout',addButton.style.display);
             addButton.style.display = 'none';
             pinContainer.style.backgroundImage = `url(${elem.image})`;
             console.log('mouseout',addButton.style.display);
@@ -77,9 +76,3 @@ searchContainer.onmouseleave = () => {
     search.style.backgroundColor = '#e9e9e9';
     searchContainer.style.backgroundColor = '#e9e9e9';
 }
-
-// function a(arr) {
-//     arr.forEach(elem => {
-//       elem.style.border = '1px solid black';  
-//     })
-// }
