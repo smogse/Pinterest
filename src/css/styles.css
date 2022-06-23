@@ -65,22 +65,16 @@
 .pin-container {
     width: 16%;
     margin-bottom: 16px;
+
     /* display: flex;
     flex-direction: column; */
+}
+
+.pin-container:hover {
+    filter: hue-rotate(-20deg);
 }
 
 .avatar {
     width: 15%;
     border-radius: 50%;
-}
-
-.img-wrapper:hover {
-    background: black;
-}
-
-.img {
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-    /* margin-bottom: 8px; */
 }

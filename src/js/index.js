@@ -1,21 +1,15 @@
 //вставляем картинки, аватарки, имена пользователей
 const images = document.getElementById('images');
-let pinContainer, imgWrapper, img, avatar, username;
+let imgWrapper, img, avatar, username;
 
 fetch('https://62ab5fb5bd0e5d29af0ed526.mockapi.io/store')
 .then((response) => response.json())
 .then((arr) => {
     arr.forEach(elem => {
-        pinContainer = document.createElement('div');
+        let pinContainer = document.createElement('div');
         pinContainer.className = 'pin-container';
-
-        imgWrapper = document.createElement('div');
-        imgWrapper.className = 'img-wrapper';
-
-        img = document.createElement('img');
-        img.className = 'img';
-        img.src = elem.image;
-        getRandomHeight(img);
+        pinContainer.style.backgroundImage = `url(${elem.image})`;
+        getRandomHeight(pinContainer);
 
         avatar = document.createElement('img');
         avatar.className = 'avatar';
@@ -25,26 +19,32 @@ fetch('https://62ab5fb5bd0e5d29af0ed526.mockapi.io/store')
         username.className = 'username';
         username.textContent = elem.username;
 
-        pinContainer.append(imgWrapper, avatar, username);
-        imgWrapper.append(img);
+        let addButton = document.createElement('button');
+        addButton.className = 'add-button';
+        addButton.style.display = 'none';
+
+
+        pinContainer.append(avatar, username, addButton);
         images.append(pinContainer);
+
+        pinContainer.addEventListener('mouseover', () => {
+                console.log('onmouseover',addButton.style.display);
+            addButton.style.display = 'block';
+                console.log('onmouseover',addButton.style.display);
+                pinContainer.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${elem.image})`;
+
+            }
+        ) ;
+        pinContainer.addEventListener('mouseout', () => {
+                console.log('mouseout',addButton.style.display);
+            addButton.style.display = 'none';
+            pinContainer.style.backgroundImage = `url(${elem.image})`;
+            console.log('mouseout',addButton.style.display);
+
+            }
+        ) ;
     })
 })
-// .then(() => {
-//     let arr = document.querySelectorAll('.pin-container');
-//     arr.forEach((elem) => {
-//         elem.onmouseover = () => {
-//             // const container = document.createElement('div');
-//             const addButton = document.createElement('button');
-//             // addButton.style.position = 'absolute';
-//             elem.append(addButton);
-//             // container.append(addButton);
-//         }
-
-//         elem.onmouseleave = () => {
-//         }
-//     })
-// })
 
 //высота картинок
 function getRandomHeight (elem) {
