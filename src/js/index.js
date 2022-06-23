@@ -1,6 +1,6 @@
 //вставляем картинки, аватарки, имена пользователей
 const images = document.getElementById('images');
-let pinContainer, img, avatar, username;
+let pinContainer, imgWrapper, img, avatar, username;
 
 fetch('https://62ab5fb5bd0e5d29af0ed526.mockapi.io/store')
 .then((response) => response.json())
@@ -8,6 +8,9 @@ fetch('https://62ab5fb5bd0e5d29af0ed526.mockapi.io/store')
     arr.forEach(elem => {
         pinContainer = document.createElement('div');
         pinContainer.className = 'pin-container';
+
+        imgWrapper = document.createElement('div');
+        imgWrapper.className = 'img-wrapper';
 
         img = document.createElement('img');
         img.className = 'img';
@@ -22,14 +25,27 @@ fetch('https://62ab5fb5bd0e5d29af0ed526.mockapi.io/store')
         username.className = 'username';
         username.textContent = elem.username;
 
-        pinContainer.append(img, avatar, username);
+        pinContainer.append(imgWrapper, avatar, username);
+        imgWrapper.append(img);
         images.append(pinContainer);
     })
 })
-.then(() => {
-    let arr = document.querySelectorAll('.pin-container');
-    a(arr);
-})
+// .then(() => {
+//     let arr = document.querySelectorAll('.pin-container');
+//     arr.forEach((elem) => {
+//         elem.onmouseover = () => {
+//             // const container = document.createElement('div');
+//             const addButton = document.createElement('button');
+//             // addButton.style.position = 'absolute';
+//             elem.append(addButton);
+//             // container.append(addButton);
+//         }
+
+//         elem.onmouseleave = () => {
+//         }
+//     })
+// })
+
 //высота картинок
 function getRandomHeight (elem) {
     let px = 200 + Math.random() * (419 - 200);
@@ -62,8 +78,8 @@ searchContainer.onmouseleave = () => {
     searchContainer.style.backgroundColor = '#e9e9e9';
 }
 
-function a(arr) {
-    arr.forEach(elem => {
-      elem.style.border = '1px solid black';  
-    })
-}
+// function a(arr) {
+//     arr.forEach(elem => {
+//       elem.style.border = '1px solid black';  
+//     })
+// }
